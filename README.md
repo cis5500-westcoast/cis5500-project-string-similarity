@@ -28,3 +28,17 @@ Paul Pogb,                        Paul Pogba,                         0.94736842
 Virgil Dijk,                      Virgil van Dijk,                    0.8461538461538461
 
 ```
+
+# Tokenizer
+
+Program (tokenizer.py) looks at the 'full_name' column and 'scorer' column in player_match.csv and tokenizes the strings.
+
+I noticed that the 'full_name' column had middle names and the 'scorer' column did not have middle names.  For example, the string "First Middle Last" compared to the string "First Last" would only have about a 60% to 70% match. I decided to tokenize the strings and compare the individual tokens in 'full_name' and 'scorer' and then compare the tokens.  If there were two tokens with over 90% match, the function returned True.  If there are not two tokens with over 90% match, the function returned False.
+
+## Example Matches
+```
+scorer,full_name,similarity,scorer_tokens,full_name_tokens,match
+Lionel Messi,Lionel Andrés Messi Cuccittini,0.5714285714285714,"['Lionel', 'Andrés', 'Messi', 'Cuccittini']","['Lionel', 'Messi']",True
+Christian Eriksen,Christian  Dannemann Eriksen,0.7555555555555555,"['Christian', 'Dannemann', 'Eriksen']","['Christian', 'Eriksen']",True
+
+```
